@@ -13,14 +13,16 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.Arrays;
+import com.accenture.proxy4pricing.data.House;
 
 @RestController
 class Controller {
 
     @CrossOrigin(origins = {"http://localhost:4200"})
-    @RequestMapping("/greeting")
+    @RequestMapping(value="/greeting", consumes="application/json")
     @ResponseBody
-    public String greeting() {
+    public String greeting(@RequestBody House body) {
+        System.out.println("Input: " + body.getId());
         return getPrice();
     }
 

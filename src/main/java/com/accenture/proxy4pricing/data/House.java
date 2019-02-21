@@ -1,11 +1,19 @@
 package com.accenture.proxy4pricing.data;
 
-class House {
+public class House {
 
     private String id;
 
     private String area;
 
     private String price;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
 }
