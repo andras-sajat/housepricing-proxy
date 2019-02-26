@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpEntity;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -59,6 +58,7 @@ class Controller {
         params.put("LotArea", house.getLotArea());
         params.put("YearBuilt", house.getYearBuilt());
         params.put("PoolArea", house.getPoolArea());
+        params.put("OverallQual", house.getOverallQuality());
         StringBuilder sb = new StringBuilder(messageStart);
         params.forEach((key, value) -> {
             sb.append("\n\"").append(key).append("\": \"").append(value).append("\",");

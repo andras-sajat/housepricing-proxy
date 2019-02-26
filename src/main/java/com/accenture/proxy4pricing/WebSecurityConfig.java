@@ -1,4 +1,4 @@
-package com.accenture.proxy4pricing.control;
+package com.accenture.proxy4pricing;
 
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
