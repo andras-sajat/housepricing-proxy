@@ -44,11 +44,7 @@ class Controller {
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         headers.setBearerAuth("SVXG6FS82Loy71Y6epKWs32aL/Fx7SmB0CWwHiXswIWbWFfS+bmoAbvhd7rFJCDVJDHmlab6zh3TI/6UGQuS7Q==");
         HttpEntity<String> entity = new HttpEntity<String>(assembledMessage(house), headers);
-        
         ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
-        
-        System.out.println(result.getBody());
-
         return(result.getBody());
     }
 
@@ -68,11 +64,8 @@ class Controller {
         params.forEach((key, value) -> {
             sb.append("\n\"").append(key).append("\": \"").append(value).append("\",");
         });
-        sb.append("\n\"").append("SalePrice").append("\": \"").append("0").append("\"");
-        
+        sb.append("\n\"").append("SalePrice").append("\": \"").append("0").append("\"");        
         sb.append(messageEnd);
-        System.out.println("Stringbuilder: "+sb);
-
         return sb.toString();
     }
 
