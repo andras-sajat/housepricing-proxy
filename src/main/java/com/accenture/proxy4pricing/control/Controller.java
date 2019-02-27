@@ -59,6 +59,11 @@ class Controller {
         params.put("YearBuilt", house.getYearBuilt());
         params.put("PoolArea", house.getPoolArea());
         params.put("OverallQual", house.getOverallQuality());
+        params.put("OverallCond", house.getOverallCond());
+        params.put("BedroomAbvGr", house.getBedroomAbvGr());
+        params.put("HouseStyle", house.getHouseStyle());
+        params.put("FullBath", house.getFullBath());
+        params.put("YearRemodAdd", house.getYearRemodAdd());
         StringBuilder sb = new StringBuilder(messageStart);
         params.forEach((key, value) -> {
             sb.append("\n\"").append(key).append("\": \"").append(value).append("\",");
