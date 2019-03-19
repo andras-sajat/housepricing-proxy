@@ -9,29 +9,23 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class House {
 
+    private String AC;
+    private String address;
+    private String area;
+    private String balcony;
+    private String comfortLevel;
+    private String condition;
+    private String elevator;
+    private String energyEfficiency;
+    private String garden;
     private String id;
-    private String lotArea;
+    private String internalHeight;
+    private String loft;
+    private String numberOfRooms;
+    private String price;
+    private String readyForDisabled;
+    private String storiesOfHouse;
+    private String story;
     private String yearBuilt;
-    private String poolArea;
-    private String overallQuality;
-    private String houseStyle;
-    private String overallCond;
-    private String fullBath;
-    private String yearRemodAdd;
-    private String bedroomAbvGr;
-
-    public String toString() {
-        return "\n    Id: "+id+
-        "\n    Lot area: "+lotArea+
-        "\n    Pool area: "+poolArea+
-        "\n    Overall quality: "+overallQuality+
-        "\n    Overall condition: "+overallCond+
-        "\n    Renovated: "+yearRemodAdd+
-        "\n    Bathrooms: "+fullBath+
-        "\n    Bedrooms: "+bedroomAbvGr+
-        "\n    House style: "+houseStyle+
-        "\n    Year built: "+yearBuilt;
-
-    }
 
 }
