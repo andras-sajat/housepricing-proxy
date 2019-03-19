@@ -42,10 +42,7 @@ class Controller {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        headers.setBearerAuth("/8fJfU4vpYQd6fuHiqPNUV2unmL+bMEg4nEFGN1OOl9Kx+StpVnomaPvbczKS4AVH5RsxceWS8ZAplDAdr51mA==");
-        String message = assembledMessage(house);
-        System.out.println(message);
-        HttpEntity<String> entity = new HttpEntity<String>(message, headers);
+        HttpEntity<String> entity = new HttpEntity<String>(assembledMessage(house), headers);
         ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
         return(result.getBody());
     }
