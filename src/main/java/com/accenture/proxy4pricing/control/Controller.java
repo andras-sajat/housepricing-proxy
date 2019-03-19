@@ -47,8 +47,9 @@ class Controller {
         System.out.println(headers);
         System.out.println(message);
         HttpEntity<String> entity = new HttpEntity<String>(message, headers);
-        //ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
-        return("");
+        ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
+        System.out.println(result.getBody());
+        return(result.getBody());
     }
 
     private String assembledMessage(House house) {
