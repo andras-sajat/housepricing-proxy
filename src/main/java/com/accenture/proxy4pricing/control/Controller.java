@@ -66,7 +66,6 @@ class Controller {
         params.put("internalHeight", house.getInternalHeight());  
         params.put("loft", house.getLoft());  
         params.put("numberOfRooms", house.getNumberOfRooms());  
-        params.put("price", house.getPrice());  
         params.put("readyForDisabled", house.getReadyForDisabled());  
         params.put("storiesOfHouse", house.getStoriesOfHouse());  
         params.put("story", house.getStory());  
@@ -97,7 +96,6 @@ class Controller {
         params.put("internalHeight","at least 3 m");  
         params.put("loft","false");  
         params.put("numberOfRooms","1");  
-        params.put("price","18900000");  
         params.put("readyForDisabled","false");  
         params.put("storiesOfHouse","3");  
         params.put("story","1");  
