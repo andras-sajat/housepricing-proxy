@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class House {
 
-    private String AC;
+    private String ac;
     private String address;
     private String area;
     private String balcony;

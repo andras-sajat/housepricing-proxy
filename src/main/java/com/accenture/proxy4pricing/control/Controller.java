@@ -53,7 +53,7 @@ class Controller {
     private String assembledMessage(House house) {
         initParams();
         params.put("Column 0","1");  
-        params.put("AC", house.getAC());  
+        params.put("AC", house.getAc());  
         params.put("address", house.getAddress());  
         params.put("area", house.getArea());  
         params.put("balcony", house.getBalcony());  
