@@ -36,13 +36,13 @@ class Controller {
     private String getPrice(House house)
     {
 
-        final String uri = "https://ussouthcentral.services.azureml.net/workspaces/cb2531634b964c36ad54858023e650d0/services/6bc89dc562824b94b9f6f6110b559f88/execute?api-version=2.0&format=swagger";
+        final String uri = "https://ussouthcentral.services.azureml.net/workspaces/cb2531634b964c36ad54858023e650d0/services/35cf9b5b05934044b494b7747c5a58b0/execute?api-version=2.0&format=swagger";
         
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        headers.setBearerAuth("/8fJfU4vpYQd6fuHiqPNUV2unmL+bMEg4nEFGN1OOl9Kx+StpVnomaPvbczKS4AVH5RsxceWS8ZAplDAdr51mA==");
+        headers.setBearerAuth("uxf58jDJpi9YxgrZI3/FtxSfnSY/SvIyv9UK+kIgjBfiBCJk4QrVbLu5XDVmVcWUFkwIGMmHdoaawo6eMy/fEw==");
         String message = assembledMessage(house);
         System.out.println(headers);
         System.out.println(message);
