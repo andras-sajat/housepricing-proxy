@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.lang.StringBuilder;
 import com.accenture.proxy4pricing.data.House;
+import com.accenture.proxy4pricing.data.RequestDetails;
 
 @RestController
 class Controller {
@@ -28,22 +29,24 @@ class Controller {
     @CrossOrigin()
     @RequestMapping(value="/greeting", consumes="application/json")
     @ResponseBody
-    public String greeting(@RequestBody House house) {
-        System.out.println("Input house parameters: " + house);
-        return getPrice(house);
+    public String greeting(@RequestBody RequestDetails request) {
+        System.out.println("Service URL: " + request.getEstimateServiceUrl());
+        System.out.println("Service key: " + request.getServiceKey());
+        System.out.println("Input house parameters: " + request.getHouse());
+        return getPrice(request);
     }
 
-    private String getPrice(House house)
+    private String getPrice(RequestDetails request)
     {
 
-        final String uri = "https://ussouthcentral.services.azureml.net/workspaces/cb2531634b964c36ad54858023e650d0/services/35cf9b5b05934044b494b7747c5a58b0/execute?api-version=2.0&format=swagger";
+        String uri = request.getEstimateServiceUrl();
         
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        headers.setBearerAuth("uxf58jDJpi9YxgrZI3/FtxSfnSY/SvIyv9UK+kIgjBfiBCJk4QrVbLu5XDVmVcWUFkwIGMmHdoaawo6eMy/fEw==");
-        String message = assembledMessage(house);
+        headers.setBearerAuth(request.getServiceKey());
+        String message = assembledMessage(request.getHouse());
         System.out.println(headers);
         System.out.println(message);
         HttpEntity<String> entity = new HttpEntity<String>(message, headers);
