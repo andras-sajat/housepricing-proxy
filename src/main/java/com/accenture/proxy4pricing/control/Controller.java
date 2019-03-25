@@ -24,7 +24,7 @@ class Controller {
 
     final String messageStart = "{\"Inputs\": {\"input1\":[{";
     
-    final String messageEnd = "}],},\"GlobalParameters\":  {}}";
+    final String messageEnd = "}]},\"GlobalParameters\":  {}}";
 
     @CrossOrigin()
     @RequestMapping(value="/greeting", consumes="application/json")
