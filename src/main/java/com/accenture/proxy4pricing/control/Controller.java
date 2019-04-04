@@ -11,7 +11,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.lang.StringBuilder;
 import com.accenture.proxy4pricing.data.House;
@@ -20,11 +20,10 @@ import com.accenture.proxy4pricing.data.RequestDetails;
 @RestController
 class Controller {
 
-    private HashMap<String, String> params;
+    private static final String MESSAGE_START = "{\"Inputs\": {\"input1\":[{";
+    private static final String MESSAGE_END = "}]},\"GlobalParameters\":  {}}";
 
-    final String messageStart = "{\"Inputs\": {\"input1\":[{";
-    
-    final String messageEnd = "}]},\"GlobalParameters\":  {}}";
+    private HashMap<String, String> params;
 
     @CrossOrigin()
     @RequestMapping(value="/greeting", consumes="application/json")
@@ -44,12 +43,12 @@ class Controller {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.setBearerAuth(request.getServiceKey());
         String message = assembledMessage(request.getHouse());
         System.out.println(headers);
         System.out.println(message);
-        HttpEntity<String> entity = new HttpEntity<String>(message, headers);
+        HttpEntity<String> entity = new HttpEntity<>(message, headers);
         ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
         System.out.println(result.getBody());
         return(result.getBody());
@@ -76,12 +75,10 @@ class Controller {
         params.put("story", house.getStory());  
         params.put("yearBuilt", house.getYearBuilt());
 
-        StringBuilder sb = new StringBuilder(messageStart);
-        params.forEach((key, value) -> {
-            sb.append("\n\"").append(key).append("\": \"").append(value).append("\",");
-        });
+        StringBuilder sb = new StringBuilder(MESSAGE_START);
+        params.forEach((key, value) -> sb.append("\n\"").append(key).append("\": \"").append(value).append("\","));
         sb.append("\n\"").append("price").append("\": \"").append("0").append("\"");        
-        sb.append(messageEnd);
+        sb.append(MESSAGE_END);
         return sb.toString();
     }
 
